@@ -1,4 +1,5 @@
 from optparse import OptionParser
+
 parser = OptionParser()
 parser.add_option('-v', '--verbose', dest="verbose", default=False, action="store_true")
 parser.add_option('-s', '--serial-numbers', dest="serial_num", default=False, action="store_true")
