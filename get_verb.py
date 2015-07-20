@@ -1,12 +1,12 @@
-from optparse import OptionParser
+import argparse
 
-parser = OptionParser()
-parser.add_option('-v', '--verbose', dest="verbose", default=False, action="store_true")
-parser.add_option('-s', '--serial-numbers', dest="serial_num", default=False, action="store_true")
-(opts, args) = parser.parse_args()
-if opts.verbose:
+parser = argparse.ArgumentParser()
+parser.add_argument('-v', '--verbose', dest="verbose", default=False, action="store_true")
+parser.add_argument('-s', '--serial-numbers', dest="serial_num", default=False, action="store_true")
+args = parser.parse_args()
+if args.verbose:
     print "verbose is ON"
 else:
     print "verbose is OFF"
-if opts.serial_num:
+if args.serial_num:
     print "some sn here"
