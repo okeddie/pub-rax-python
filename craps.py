@@ -95,7 +95,5 @@ while True:
         print("You played a total of {0:d} games".format(literal_rolls))
         break
     else:
-        print("Input not accepted." )
+        print("Game over.")
         break
-if cash < 0:
-   print("Game over")
