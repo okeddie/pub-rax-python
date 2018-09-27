@@ -27,6 +27,8 @@ while True:
         print("Rolling now.....")
         literal_rolls += 1
         for i in range(1,roll_count,1):
+            if cash < 0:
+                break
             if cash > 0:
                 print("cash balance is: ${0:,.2f}".format(cash))
                 roll_total = roll_die()
@@ -70,23 +72,30 @@ while True:
                        cash = cash + 10.00
                        break
                     else:
-                       print("You did not roll point, rolled a {0:d} and point was {1:d} roll again.".format(roll_total, point_number))
+                       print("You rolled a {0:d} and point was {1:d}, must roll again.".format(roll_total, point_number))
                        continue
             if cash < 0:
-                print("You out of cash. go home.")
                 break
+        if cash < 0:
+            print("You out of cash. go home.")
+            break
+            print("cash balance is: ${0:,.2f}".format(cash))
             play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
             if play_again_prompt == "N" or play_again_prompt == "n":
                 break
             if play_again_prompt == "y" or play_again_prompt == "Y":
-                print("Welcome to eddie's crap shoot. Here we go!!!")
-                print("Rolling now.....")
+                print("Rolling again!!!")
                 continue
             else:
                 break
-    if play_again_prompt == "N" or play_again_prompt == "n":
-                print("thanks for playing. cash balance is: ${0:,.2f}".format(cash))
-                break
-    else:
-        print("Input not accepted.")
+    if cash < 0:
         break
+    if play_again_prompt == "N" or play_again_prompt == "n":
+        print("thanks for playing. Final cash balance is: ${0:,.2f}".format(cash))
+        print("You played a total of {0:d} games".format(literal_rolls))
+        break
+    else:
+        print("Input not accepted." )
+        break
+if cash < 0:
+   print("Game over")
