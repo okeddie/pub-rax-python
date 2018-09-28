@@ -32,11 +32,6 @@ while True:
             if cash > 0:
                 print("cash balance is: ${0:,.2f}".format(cash))
                 roll_total = roll_die()
-                try:
-                    roll_total = int(roll_total)
-                except ValueError:
-                    print("failed to set roll total count")
-                    break
                 if play_again_prompt == "N" or play_again_prompt == "n":
                     break
                 if roll_total == 2:
@@ -48,19 +43,14 @@ while True:
                         print("you rolled a {0:d} on your {1:d}st roll. You WIN!".format(roll_total, literal_rolls))
                         cash = cash + 10.00
         	        continue
-        		if roll_total == 2 or roll_total == 3 or roll_total == 12:	        
-                            print("you rolled a {0:d} on your {1:d}st roll. You LOST!".format(roll_total, literal_rolls))
-                            cash = cash - 10.00
-                            break
+                    if roll_total == 2 or roll_total == 3 or roll_total == 12:	        
+                        print("you rolled a {0:d} on your {1:d}st roll. You LOST!".format(roll_total, literal_rolls))
+                        cash = cash - 10.00
+                        continue
                 print("You've rolled a POINT number - {0:d} , you must roll again!".format(roll_total))
                 point_number = int(roll_total)
                 while True:
                     roll_total = roll_die()
-                    try:
-                        roll_total = int(roll_total)
-                    except ValueError:
-                            print("failed to set roll total count")
-                            break
                     point_rolls += 1
                     if roll_total == 7:
                        roll_7_count += 1
@@ -76,18 +66,18 @@ while True:
                        continue
             if cash < 0:
                 break
+            else:
+                play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
         if cash < 0:
             print("You out of cash. go home.")
             break
-            print("cash balance is: ${0:,.2f}".format(cash))
-            play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
-            if play_again_prompt == "N" or play_again_prompt == "n":
-                break
-            if play_again_prompt == "y" or play_again_prompt == "Y":
-                print("Rolling again!!!")
-                continue
-            else:
-                break
+        if play_again_prompt == "N" or play_again_prompt == "n":
+            break
+        if play_again_prompt == "y" or play_again_prompt == "Y":
+            print("Rolling again!!!")
+            continue
+        else:
+             break
     if cash < 0:
         break
     if play_again_prompt == "N" or play_again_prompt == "n":
