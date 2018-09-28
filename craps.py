@@ -5,19 +5,17 @@ This is a fancy dice app.
 
 from random import randrange
 
-roll_7_count = 0
-roll_2_count = 0
-literal_rolls = 0
-point_rolls = 0
 cash = 100.00
 # Assume if user ran script, default play is Y/y.
 play_again_prompt = 'y'
+
 
 def roll_die():
     roll_dice1 = randrange(1,7)
     roll_dice2 = randrange(1,7)
     roll_total = roll_dice1 + roll_dice2
     return roll_total
+
 
 def prompt_play():
     while True:
@@ -30,6 +28,7 @@ def prompt_play():
             print("User entered bad input.")
             continue
     return play_again_prompt
+
 
 while True:
     print("Welcome to eddie's crap shoot. Here we go!!!")
@@ -44,7 +43,7 @@ while True:
         if roll_total == 7 or roll_total == 11:
             print("you rolled a {0:d} on your 1st roll. You WIN!".format(roll_total))
             cash = cash + 10.00
-            prompt_play()
+            play_again_prompt = prompt_play()
             continue
         if roll_total == 2 or roll_total == 3 or roll_total == 12:
             print("you rolled a {0:d} on your 1st roll. You LOST!".format(roll_total))
@@ -52,27 +51,24 @@ while True:
             if cash > 0:
                 play_again_prompt = prompt_play()
             continue
-        point_number = int(roll_total)
-
-        print("You've rolled a POINT number - {0:d} , you must roll again!".format(roll_total))
         while True:
+            point_number = int(roll_total)
+            print("You've rolled a POINT number - {0:d} , you must roll again!".format(roll_total))
             roll_total = roll_die()
-            point_rolls += 1
             if roll_total == 7:
-               roll_7_count += 1
-               print("you rolled a {0:d} on your POINT roll. You LOSE!".format(roll_total))
-               cash = cash - 10.00
-               if cash > 0:
-                   play_again_prompt = prompt_play()
-               break
+                print("you rolled a {0:d} on your POINT roll. You LOSE!".format(roll_total))
+                cash = cash - 10.00
+                if cash > 0:
+                    play_again_prompt = prompt_play()
+                break
             if roll_total == point_number:
-               print("You rolled the POINT! POINT was {0:d}, you rolled {1:d}. You WIN!".format(point_number, roll_total))
-               cash = cash + 10.00
-               play_again_prompt = prompt_play()
-               break
+                print("You rolled the POINT! POINT was {0:d}, you rolled {1:d}. You WIN!".format(point_number, roll_total))
+                cash = cash + 10.00
+                play_again_prompt = prompt_play()
+                break
             else:
-               print("You rolled a {0:d} and point was {1:d}, must roll again.".format(roll_total, point_number))
-               continue
+                print("You rolled a {0:d} and point was {1:d}, must roll again.".format(roll_total, point_number))
+                continue
         if cash <= 0:
             break
         if play_again_prompt == "N" or play_again_prompt == "n":
