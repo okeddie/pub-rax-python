@@ -33,18 +33,6 @@ def prompt_play():
             continue
     return play_again_prompt
 
-#while True:
-#    test_play = prompt_play()
-#    if test_play == "n" or test_play == "N":
-#        print("user quit")
-#        break
-#    if test_play == "y" or test_play == "Y":
-#        print("user continued")
-#        break
-#    if test_play != "n" or test_play != "N":
-#        print("user entered bad input.")
-#        continue
-
 while True:
     print("Welcome to eddie's crap shoot. Here we go!!!")
     while True:
