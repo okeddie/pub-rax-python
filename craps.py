@@ -66,7 +66,7 @@ while True:
                    play_again_prompt = prompt_play()
                break
             if roll_total == point_number:
-               print("You rolled the POINT! You win! POINT was {0:d} and you rolled {1:d}".format(point_number, roll_total))
+               print("You rolled the POINT! POINT was {0:d}, you rolled {1:d}. You WIN!".format(point_number, roll_total))
                cash = cash + 10.00
                play_again_prompt = prompt_play()
                break
