@@ -5,14 +5,12 @@ This is a fancy dice app.
 
 from random import randrange
 
-roll_count = 1000000
 roll_7_count = 0
 roll_2_count = 0
 literal_rolls = 0
-roll_2_percent = 0
-roll_7_percent = 0
 point_rolls = 0
 cash = 100.00
+# Assume if user ran script, default play is Y/y.
 play_again_prompt = 'y'
 
 def roll_die():
@@ -43,19 +41,19 @@ while True:
             roll_total = roll_die()
         if play_again_prompt == "N" or play_again_prompt == "n":
             break
-        if literal_rolls == 1:
-            if roll_total == 7 or roll_total == 11:
-                print("you rolled a {0:d} on your {1:d}st roll. You WIN!".format(roll_total, literal_rolls))
-                cash = cash + 10.00
-                prompt_play()
-                break
-            if roll_total == 2 or roll_total == 3 or roll_total == 12:	        
-                print("you rolled a {0:d} on your {1:d}st roll. You LOST!".format(roll_total, literal_rolls))
-                cash = cash - 10.00
-                if cash > 0:
-                    play_again_prompt = prompt_play()
-                break
+        if roll_total == 7 or roll_total == 11:
+            print("you rolled a {0:d} on your 1st roll. You WIN!".format(roll_total))
+            cash = cash + 10.00
+            prompt_play()
+            continue
+        if roll_total == 2 or roll_total == 3 or roll_total == 12:
+            print("you rolled a {0:d} on your 1st roll. You LOST!".format(roll_total))
+            cash = cash - 10.00
+            if cash > 0:
+                play_again_prompt = prompt_play()
+            continue
         point_number = int(roll_total)
+
         print("You've rolled a POINT number - {0:d} , you must roll again!".format(roll_total))
         while True:
             roll_total = roll_die()
