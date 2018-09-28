@@ -43,11 +43,27 @@ while True:
                         print("you rolled a {0:d} on your {1:d}st roll. You WIN!".format(roll_total, literal_rolls))
                         cash = cash + 10.00
                         play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
+                        while True:
+                            play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
+                            if play_again_prompt == "y" or play_again_prompt == "Y":
+                                break
+                            if play_again_prompt == "N" or play_again_prompt == "n":
+                                break
+                            else:
+                                continue
         	        continue
                     if roll_total == 2 or roll_total == 3 or roll_total == 12:	        
                         print("you rolled a {0:d} on your {1:d}st roll. You LOST!".format(roll_total, literal_rolls))
                         cash = cash - 10.00
                         play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
+                        while True:
+                            play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
+                            if play_again_prompt == "y" or play_again_prompt == "Y":
+                                break
+                            if play_again_prompt == "N" or play_again_prompt == "n":
+                                break
+                            else:
+                                continue
                         continue
                 print("You've rolled a POINT number - {0:d} , you must roll again!".format(roll_total))
                 point_number = int(roll_total)
@@ -68,8 +84,14 @@ while True:
                        continue
             if cash < 0:
                 break
-            else:
-               play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
+            while True:
+                play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
+                if play_again_prompt == "y" or play_again_prompt == "Y":
+                    break
+                if play_again_prompt == "N" or play_again_prompt == "n":
+                    break
+                else:
+                    continue
         if cash < 0:
             print("You out of cash. go home.")
             break
