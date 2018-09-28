@@ -21,7 +21,7 @@ def roll_die():
 
 def prompt_play():
     while True:
-        play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
+        play_again_prompt = raw_input("Do you wish play again? Y/y for yes, N/n for no. ")
         if play_again_prompt == "N" or play_again_prompt == "n":
             break
         if play_again_prompt == "Y" or play_again_prompt == "y":
