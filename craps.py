@@ -34,7 +34,7 @@ def prompt_play():
 while True:
     print("Welcome to eddie's crap shoot. Here we go!!!")
     while True:
-        if cash < 0:
+        if cash <= 0:
             break
         if cash > 0:
             print("cash balance is: ${0:,.2f}".format(cash))
@@ -73,14 +73,13 @@ while True:
             else:
                print("You rolled a {0:d} and point was {1:d}, must roll again.".format(roll_total, point_number))
                continue
-        if cash < 0:
+        if cash <= 0:
             break
         if play_again_prompt == "N" or play_again_prompt == "n":
             break
         if play_again_prompt == "y" or play_again_prompt == "Y":
             print("Rolling again!!!")
-            continue
-    if cash < 0:
+    if cash <= 0:
         print("You're out of funds. go home.")
         break
     if play_again_prompt == "N" or play_again_prompt == "n":
