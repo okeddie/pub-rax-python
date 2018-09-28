@@ -44,16 +44,17 @@ while True:
             print("you rolled a {0:d} on your 1st roll. You WIN!".format(roll_total))
             cash = cash + 10.00
             play_again_prompt = prompt_play()
-            continue
+            break
         if roll_total == 2 or roll_total == 3 or roll_total == 12:
             print("you rolled a {0:d} on your 1st roll. You LOST!".format(roll_total))
             cash = cash - 10.00
             if cash > 0:
                 play_again_prompt = prompt_play()
-            continue
+            break
+        # if the previous rolls did not match, set the point number and begin loop rolls.
+        point_number = int(roll_total)
+        print("You've rolled a POINT number - {0:d} , you must roll again!".format(roll_total))
         while True:
-            point_number = int(roll_total)
-            print("You've rolled a POINT number - {0:d} , you must roll again!".format(roll_total))
             roll_total = roll_die()
             if roll_total == 7:
                 print("you rolled a {0:d} on your POINT roll. You LOSE!".format(roll_total))
@@ -74,13 +75,16 @@ while True:
         if play_again_prompt == "N" or play_again_prompt == "n":
             break
         if play_again_prompt == "y" or play_again_prompt == "Y":
-            print("Rolling again!!!")
+            print("Rolling again after point roll!!!")
     if cash <= 0:
         print("You're out of funds. go home.")
         break
     if play_again_prompt == "N" or play_again_prompt == "n":
         print("Thanks for playing! Final cash balance is: ${0:,.2f}".format(cash))
         break
+    if play_again_prompt == "Y" or play_again_prompt == "y":
+        print("Rolling a new game!!")
+        continue
     else:
         print("Game over.")
         break
