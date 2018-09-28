@@ -42,10 +42,12 @@ while True:
                     if roll_total == 7 or roll_total == 11:
                         print("you rolled a {0:d} on your {1:d}st roll. You WIN!".format(roll_total, literal_rolls))
                         cash = cash + 10.00
+                        play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
         	        continue
                     if roll_total == 2 or roll_total == 3 or roll_total == 12:	        
                         print("you rolled a {0:d} on your {1:d}st roll. You LOST!".format(roll_total, literal_rolls))
                         cash = cash - 10.00
+                        play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
                         continue
                 print("You've rolled a POINT number - {0:d} , you must roll again!".format(roll_total))
                 point_number = int(roll_total)
@@ -67,7 +69,7 @@ while True:
             if cash < 0:
                 break
             else:
-                play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
+               play_again_prompt = raw_input("Do you wish play? Y/y for yes, N/n for no. ")
         if cash < 0:
             print("You out of cash. go home.")
             break
