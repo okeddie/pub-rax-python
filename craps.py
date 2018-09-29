@@ -1,3 +1,4 @@
+#!/usr/bin/python
 """
 
 This is a fancy dice app.
